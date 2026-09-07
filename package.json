@@ -1,0 +1,48 @@
+{
+  "name": "globalflexinars-admin",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Global Flexinars CE Platform — Admin Panel (Phase 0). Dependency-mode consumer of the @tindevelopers/* shell packages.",
+  "packageManager": "pnpm@10.6.1",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit"
+  },
+  "_productionDependencies": {
+    "__comment": "Canonical dependency-mode versions to use once a GitHub Packages read:packages token is available. Replace the link: specifiers in `dependencies` below with these, then `pnpm install`. See README.md.",
+    "@base/core": "npm:@tindevelopers/base-core@0.2.0-rc.4",
+    "@tindevelopers/base-core": "0.2.0-rc.4",
+    "@tindevelopers/control-plane": "0.2.0-rc.4",
+    "@tindevelopers/ui-shell": "0.2.0-rc.4",
+    "@tindevelopers/platform-core": "0.3.0-rc.4",
+    "@tindevelopers/platform-schema": "0.3.0-rc.4",
+    "@tindevelopers/platform-ui": "0.3.0-rc.4"
+  },
+  "dependencies": {
+    "@tindevelopers/base-core": "link:../shell-base-admin/packages/base-core",
+    "@tindevelopers/control-plane": "link:../shell-base-admin/packages/control-plane",
+    "@tindevelopers/ui-shell": "link:../shell-base-admin/packages/ui-shell",
+    "@tindevelopers/platform-core": "link:../shell-base-admin/packages/platform-core",
+    "@tindevelopers/platform-schema": "link:../shell-base-admin/packages/platform-schema",
+    "@tindevelopers/platform-ui": "link:../shell-base-admin/packages/platform-ui",
+    "next": "15.5.4",
+    "pg": "^8.13.1",
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.13",
+    "@types/node": "^22.10.5",
+    "@types/pg": "^8.11.10",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "tailwindcss": "^4.1.13",
+    "typescript": "^5.9.2"
+  }
+}
