@@ -14,23 +14,14 @@
     "lint": "next lint",
     "type-check": "tsc --noEmit"
   },
-  "_productionDependencies": {
-    "__comment": "Canonical dependency-mode versions to use once a GitHub Packages read:packages token is available. Replace the link: specifiers in `dependencies` below with these, then `pnpm install`. See README.md.",
+  "dependencies": {
     "@base/core": "npm:@tindevelopers/base-core@0.2.0-rc.4",
     "@tindevelopers/base-core": "0.2.0-rc.4",
     "@tindevelopers/control-plane": "0.2.0-rc.4",
     "@tindevelopers/ui-shell": "0.2.0-rc.4",
     "@tindevelopers/platform-core": "0.3.0-rc.4",
     "@tindevelopers/platform-schema": "0.3.0-rc.4",
-    "@tindevelopers/platform-ui": "0.3.0-rc.4"
-  },
-  "dependencies": {
-    "@tindevelopers/base-core": "link:../shell-base-admin/packages/base-core",
-    "@tindevelopers/control-plane": "link:../shell-base-admin/packages/control-plane",
-    "@tindevelopers/ui-shell": "link:../shell-base-admin/packages/ui-shell",
-    "@tindevelopers/platform-core": "link:../shell-base-admin/packages/platform-core",
-    "@tindevelopers/platform-schema": "link:../shell-base-admin/packages/platform-schema",
-    "@tindevelopers/platform-ui": "link:../shell-base-admin/packages/platform-ui",
+    "@tindevelopers/platform-ui": "0.3.0-rc.4",
     "next": "15.5.4",
     "pg": "^8.13.1",
     "react": "19.2.0",

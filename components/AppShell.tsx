@@ -7,10 +7,10 @@ import {
   AppHeader,
   SidebarProvider,
   ThemeProvider,
-  type NavItem,
+  type ShellNavItem,
 } from "@tindevelopers/ui-shell";
 
-const navigation: { main: NavItem[]; support: NavItem[]; others: NavItem[] } = {
+const navigation: { main: ShellNavItem[]; support: ShellNavItem[]; others: ShellNavItem[] } = {
   main: [
     { name: "Dashboard", path: "/" },
     { name: "Users", path: "/users" },
