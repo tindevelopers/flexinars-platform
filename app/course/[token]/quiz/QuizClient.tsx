@@ -52,9 +52,12 @@ export default function QuizClient({
     }
   }, [token, router]);
 
+  // Switch to results whenever the server action returns a new submitted state.
+  // Dependency is `state` (not `state.submitted`) so the effect fires on every
+  // action response — including attempt #2+ where submitted was already true.
   useEffect(() => {
     if (state.submitted) setView("results");
-  }, [state.submitted]);
+  }, [state]);
 
   const allAnswered = questions.every((q) => answers[q.id]);
 
