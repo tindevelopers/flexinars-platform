@@ -133,7 +133,7 @@ export async function sendInviteEmail(
   }
 
   const fromAddress =
-    process.env.EMAIL_FROM_ADDRESS || "noreply@globalflexinars.com";
+    process.env.EMAIL_FROM_ADDRESS || "notifications@mail.flexinars.com";
   const fromName = process.env.EMAIL_FROM_NAME || "Global Flexinars CE";
   const replyTo = process.env.ADMIN_EMAIL || fromAddress;
 
