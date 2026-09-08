@@ -164,6 +164,109 @@ export async function getCourseById(id: string): Promise<CourseDetail | null> {
   return { ...courses[0], questions };
 }
 
+// ---------------------------------------------------------------------------
+// Participant-facing (public, token-gated) queries
+// ---------------------------------------------------------------------------
+
+const UUID_RE =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+export interface ParticipantEnrollment {
+  id: string;
+  tenant_id: string;
+  clinician_name: string;
+  professional_title: string;
+  email: string;
+  location: string | null;
+  date_completed: string | null;
+  status: EnrollmentStatus;
+  completed_at: string | null;
+  invite_token: string;
+  // joined course fields
+  course_id: string;
+  course_title: string;
+  provider: string;
+  speaker: string;
+  topic: string;
+  video_url: string;
+  video_platform: string;
+  passing_score: number;
+  ce_credits: string;
+}
+
+/**
+ * Look up an enrollment by its invite token (a UUID). Returns null for an
+ * invalid/non-UUID token or when no enrollment matches, so callers can render
+ * a clear "invalid link" page rather than a login redirect.
+ */
+export async function getEnrollmentByToken(
+  token: string
+): Promise<ParticipantEnrollment | null> {
+  if (!token || !UUID_RE.test(token)) return null;
+  const rows = await query<ParticipantEnrollment>(
+    `SELECT e.id, e.tenant_id, e.clinician_name, e.professional_title, e.email,
+            e.location, to_char(e.date_completed, 'YYYY-MM-DD') AS date_completed,
+            e.status, e.completed_at, e.invite_token, e.course_id,
+            c.title AS course_title, c.provider, c.speaker, c.topic,
+            c.video_url, c.video_platform, c.passing_score, c.ce_credits
+     FROM enrollments e
+     JOIN courses c ON c.id = e.course_id
+     WHERE e.invite_token = $1`,
+    [token]
+  );
+  return rows[0] ?? null;
+}
+
+/** Ordered T/F quiz questions for a course (participant quiz). */
+export async function getCourseQuestions(
+  courseId: string
+): Promise<CourseQuestion[]> {
+  return query<CourseQuestion>(
+    `SELECT id, position, question_text, correct_answer, rationale
+     FROM course_questions WHERE course_id = $1 ORDER BY position ASC`,
+    [courseId]
+  );
+}
+
+/** Number of quiz attempts already recorded for an enrollment. */
+export async function getQuizAttemptCount(
+  enrollmentId: string
+): Promise<number> {
+  const rows = await query<{ count: string }>(
+    `SELECT COUNT(*)::text AS count FROM quiz_attempts WHERE enrollment_id = $1`,
+    [enrollmentId]
+  );
+  return parseInt(rows[0]?.count ?? "0", 10);
+}
+
+/** Most recent quiz attempt (for the completion screen). */
+export async function getLatestQuizAttempt(
+  enrollmentId: string
+): Promise<{ score: number; passed: boolean; attempt_number: number } | null> {
+  const rows = await query<{
+    score: number;
+    passed: boolean;
+    attempt_number: number;
+  }>(
+    `SELECT score, passed, attempt_number
+     FROM quiz_attempts WHERE enrollment_id = $1
+     ORDER BY submitted_at DESC LIMIT 1`,
+    [enrollmentId]
+  );
+  return rows[0] ?? null;
+}
+
+/** Whether a course evaluation has already been submitted for an enrollment. */
+export async function hasEvaluation(enrollmentId: string): Promise<boolean> {
+  const rows = await query<{ exists: boolean }>(
+    `SELECT EXISTS(
+       SELECT 1 FROM course_evaluations WHERE enrollment_id = $1
+     ) AS exists`,
+    [enrollmentId]
+  );
+  return rows[0]?.exists ?? false;
+}
+
 /** Resolve the default (Global Flexinars) tenant id for new courses. */
 export async function getDefaultTenantId(): Promise<string | null> {
   const rows = await query<{ id: string }>(
