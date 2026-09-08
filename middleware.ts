@@ -16,7 +16,16 @@ import { auth } from "@/lib/auth/server";
  * Neon Auth remains the sole auth provider — we only wrap its middleware to
  * inject the tenant header; all protection/redirect behaviour is unchanged.
  */
-const authMiddleware = auth.middleware({ loginUrl: "/login" });
+// Lazily created on first request so createNeonAuth() is never invoked at
+// module-evaluation time (build-time "Collecting page data" has no env vars,
+// which would otherwise throw "Missing required config: cookies.secret").
+let _authMiddleware: ReturnType<typeof auth.middleware> | undefined;
+function getAuthMiddleware() {
+  if (!_authMiddleware) {
+    _authMiddleware = auth.middleware({ loginUrl: "/login" });
+  }
+  return _authMiddleware;
+}
 
 /**
  * Extract the tenant subdomain from a raw Host header (may include a port).
@@ -54,7 +63,7 @@ export default async function middleware(request: NextRequest) {
     forwarded = new NextRequest(request, { headers });
   }
 
-  const response = await authMiddleware(forwarded);
+  const response = await getAuthMiddleware()(forwarded);
   if (subdomain && response) {
     response.headers.set("x-tenant-subdomain", subdomain);
   }
