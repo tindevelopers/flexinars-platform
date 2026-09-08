@@ -1,5 +1,5 @@
 import "server-only";
-import { Pool, type QueryResultRow } from "pg";
+import { Pool, type PoolClient, type QueryResultRow } from "pg";
 
 /**
  * Server-only Postgres (Neon) connection pool.
@@ -38,4 +38,25 @@ export async function query<T extends QueryResultRow = QueryResultRow>(
 ): Promise<T[]> {
   const res = await pool.query<T>(text, params as never);
   return res.rows;
+}
+
+/**
+ * Run a set of statements inside a single transaction. Commits on success,
+ * rolls back on any thrown error, and always releases the client.
+ */
+export async function withTransaction<T>(
+  fn: (client: PoolClient) => Promise<T>
+): Promise<T> {
+  const client = await pool.connect();
+  try {
+    await client.query("BEGIN");
+    const result = await fn(client);
+    await client.query("COMMIT");
+    return result;
+  } catch (err) {
+    await client.query("ROLLBACK");
+    throw err;
+  } finally {
+    client.release();
+  }
 }

@@ -14,6 +14,9 @@ importers:
       '@getbrevo/brevo':
         specifier: ^6.0.3
         version: 6.0.3
+      '@neondatabase/auth':
+        specifier: 0.5.0-beta
+        version: 0.5.0-beta(c453f552518ec042c999aa27723686ea)
       '@tindevelopers/base-core':
         specifier: 0.2.0-rc.4
         version: 0.2.0-rc.4(@neondatabase/auth@0.5.0-beta(c453f552518ec042c999aa27723686ea))(@opentelemetry/api@1.9.0)(@types/node@22.20.1)(drizzle-orm@0.45.2(@opentelemetry/api@1.9.0)(@types/pg@8.23.1)(kysely@0.29.5)(pg@8.23.0))(next@15.5.4(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sswr@2.2.0(svelte@5.57.0))(svelte@5.57.0)(vue@3.5.42(typescript@5.9.3))
@@ -3542,8 +3545,7 @@ snapshots:
     dependencies:
       '@babel/types': 7.29.8
 
-  '@babel/runtime@7.29.7':
-    optional: true
+  '@babel/runtime@7.29.7': {}
 
   '@babel/types@7.29.8':
     dependencies:
@@ -3557,7 +3559,6 @@ snapshots:
       better-auth: 1.6.23(@opentelemetry/api@1.9.0)(drizzle-orm@0.45.2(@opentelemetry/api@1.9.0)(@types/pg@8.23.1)(kysely@0.29.5)(pg@8.23.0))(next@15.5.4(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(pg@8.23.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(svelte@5.57.0)(vue@3.5.42(typescript@5.9.3))
       better-call: 2.0.2(zod@4.5.4)
       zod: 4.5.4
-    optional: true
 
   '@better-auth/core@1.6.23(@better-auth/utils@0.4.2)(@better-fetch/fetch@1.3.1)(@opentelemetry/api@1.9.0)(better-call@1.3.7(zod@4.5.4))(jose@6.2.5)(kysely@0.29.5)(nanostores@1.5.3)':
     dependencies:
@@ -3572,7 +3573,6 @@ snapshots:
       zod: 4.5.4
     optionalDependencies:
       '@opentelemetry/api': 1.9.0
-    optional: true
 
   '@better-auth/drizzle-adapter@1.6.23(@better-auth/core@1.6.23(@better-auth/utils@0.4.2)(@better-fetch/fetch@1.3.1)(@opentelemetry/api@1.9.0)(better-call@1.3.7(zod@4.5.4))(jose@6.2.5)(kysely@0.29.5)(nanostores@1.5.3))(@better-auth/utils@0.4.2)(drizzle-orm@0.45.2(@opentelemetry/api@1.9.0)(@types/pg@8.23.1)(kysely@0.29.5)(pg@8.23.0))':
     dependencies:
@@ -3580,7 +3580,6 @@ snapshots:
       '@better-auth/utils': 0.4.2
     optionalDependencies:
       drizzle-orm: 0.45.2(@opentelemetry/api@1.9.0)(@types/pg@8.23.1)(kysely@0.29.5)(pg@8.23.0)
-    optional: true
 
   '@better-auth/kysely-adapter@1.6.23(@better-auth/core@1.6.23(@better-auth/utils@0.4.2)(@better-fetch/fetch@1.3.1)(@opentelemetry/api@1.9.0)(better-call@1.3.7(zod@4.5.4))(jose@6.2.5)(kysely@0.29.5)(nanostores@1.5.3))(@better-auth/utils@0.4.2)(kysely@0.29.5)':
     dependencies:
@@ -3588,19 +3587,16 @@ snapshots:
       '@better-auth/utils': 0.4.2
     optionalDependencies:
       kysely: 0.29.5
-    optional: true
 
   '@better-auth/memory-adapter@1.6.23(@better-auth/core@1.6.23(@better-auth/utils@0.4.2)(@better-fetch/fetch@1.3.1)(@opentelemetry/api@1.9.0)(better-call@1.3.7(zod@4.5.4))(jose@6.2.5)(kysely@0.29.5)(nanostores@1.5.3))(@better-auth/utils@0.4.2)':
     dependencies:
       '@better-auth/core': 1.6.23(@better-auth/utils@0.4.2)(@better-fetch/fetch@1.3.1)(@opentelemetry/api@1.9.0)(better-call@1.3.7(zod@4.5.4))(jose@6.2.5)(kysely@0.29.5)(nanostores@1.5.3)
       '@better-auth/utils': 0.4.2
-    optional: true
 
   '@better-auth/mongo-adapter@1.6.23(@better-auth/core@1.6.23(@better-auth/utils@0.4.2)(@better-fetch/fetch@1.3.1)(@opentelemetry/api@1.9.0)(better-call@1.3.7(zod@4.5.4))(jose@6.2.5)(kysely@0.29.5)(nanostores@1.5.3))(@better-auth/utils@0.4.2)':
     dependencies:
       '@better-auth/core': 1.6.23(@better-auth/utils@0.4.2)(@better-fetch/fetch@1.3.1)(@opentelemetry/api@1.9.0)(better-call@1.3.7(zod@4.5.4))(jose@6.2.5)(kysely@0.29.5)(nanostores@1.5.3)
       '@better-auth/utils': 0.4.2
-    optional: true
 
   '@better-auth/passkey@1.6.23(@better-auth/core@1.6.23(@better-auth/utils@0.4.2)(@better-fetch/fetch@1.3.1)(@opentelemetry/api@1.9.0)(better-call@1.3.7(zod@4.5.4))(jose@6.2.5)(kysely@0.29.5)(nanostores@1.5.3))(@better-auth/utils@0.4.2)(@better-fetch/fetch@1.3.1)(better-auth@1.6.23(@opentelemetry/api@1.9.0)(drizzle-orm@0.45.2(@opentelemetry/api@1.9.0)(@types/pg@8.23.1)(kysely@0.29.5)(pg@8.23.0))(next@15.5.4(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(pg@8.23.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(svelte@5.57.0)(vue@3.5.42(typescript@5.9.3)))(better-call@1.3.7(zod@4.5.4))(nanostores@1.5.3)':
     dependencies:
@@ -3613,41 +3609,33 @@ snapshots:
       better-call: 1.3.7(zod@4.5.4)
       nanostores: 1.5.3
       zod: 4.5.4
-    optional: true
 
   '@better-auth/prisma-adapter@1.6.23(@better-auth/core@1.6.23(@better-auth/utils@0.4.2)(@better-fetch/fetch@1.3.1)(@opentelemetry/api@1.9.0)(better-call@1.3.7(zod@4.5.4))(jose@6.2.5)(kysely@0.29.5)(nanostores@1.5.3))(@better-auth/utils@0.4.2)':
     dependencies:
       '@better-auth/core': 1.6.23(@better-auth/utils@0.4.2)(@better-fetch/fetch@1.3.1)(@opentelemetry/api@1.9.0)(better-call@1.3.7(zod@4.5.4))(jose@6.2.5)(kysely@0.29.5)(nanostores@1.5.3)
       '@better-auth/utils': 0.4.2
-    optional: true
 
   '@better-auth/telemetry@1.6.23(@better-auth/core@1.6.23(@better-auth/utils@0.4.2)(@better-fetch/fetch@1.3.1)(@opentelemetry/api@1.9.0)(better-call@1.3.7(zod@4.5.4))(jose@6.2.5)(kysely@0.29.5)(nanostores@1.5.3))(@better-auth/utils@0.4.2)(@better-fetch/fetch@1.3.1)':
     dependencies:
       '@better-auth/core': 1.6.23(@better-auth/utils@0.4.2)(@better-fetch/fetch@1.3.1)(@opentelemetry/api@1.9.0)(better-call@1.3.7(zod@4.5.4))(jose@6.2.5)(kysely@0.29.5)(nanostores@1.5.3)
       '@better-auth/utils': 0.4.2
       '@better-fetch/fetch': 1.3.1
-    optional: true
 
-  '@better-auth/utils@0.3.1':
-    optional: true
+  '@better-auth/utils@0.3.1': {}
 
   '@better-auth/utils@0.4.2':
     dependencies:
       '@noble/hashes': 2.4.0
-    optional: true
 
-  '@better-fetch/fetch@1.3.1':
-    optional: true
+  '@better-fetch/fetch@1.3.1': {}
 
   '@captchafox/react@1.13.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
       '@captchafox/types': 1.6.0
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
-    optional: true
 
-  '@captchafox/types@1.6.0':
-    optional: true
+  '@captchafox/types@1.6.0': {}
 
   '@daveyplate/better-auth-tanstack@1.3.6(@tanstack/query-core@5.102.8)(@tanstack/react-query@5.102.8(react@19.2.0))(better-auth@1.6.23(@opentelemetry/api@1.9.0)(drizzle-orm@0.45.2(@opentelemetry/api@1.9.0)(@types/pg@8.23.1)(kysely@0.29.5)(pg@8.23.0))(next@15.5.4(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(pg@8.23.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(svelte@5.57.0)(vue@3.5.42(typescript@5.9.3)))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
@@ -3656,7 +3644,6 @@ snapshots:
       better-auth: 1.6.23(@opentelemetry/api@1.9.0)(drizzle-orm@0.45.2(@opentelemetry/api@1.9.0)(@types/pg@8.23.1)(kysely@0.29.5)(pg@8.23.0))(next@15.5.4(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(pg@8.23.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(svelte@5.57.0)(vue@3.5.42(typescript@5.9.3))
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
-    optional: true
 
   '@daveyplate/better-auth-ui@3.4.0(2f69778c760af8e87bcfbe5780fc4bdd)':
     dependencies:
@@ -3711,7 +3698,6 @@ snapshots:
       - '@better-auth/utils'
       - '@types/react'
       - '@types/react-dom'
-    optional: true
 
   '@emnapi/runtime@1.11.3':
     dependencies:
@@ -3744,23 +3730,19 @@ snapshots:
   '@floating-ui/core@1.8.0':
     dependencies:
       '@floating-ui/utils': 0.2.12
-    optional: true
 
   '@floating-ui/dom@1.8.0':
     dependencies:
       '@floating-ui/core': 1.8.0
       '@floating-ui/utils': 0.2.12
-    optional: true
 
   '@floating-ui/react-dom@2.1.9(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
       '@floating-ui/dom': 1.8.0
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
-    optional: true
 
-  '@floating-ui/utils@0.2.12':
-    optional: true
+  '@floating-ui/utils@0.2.12': {}
 
   '@getbrevo/brevo@2.5.0':
     dependencies:
@@ -3772,8 +3754,7 @@ snapshots:
 
   '@getbrevo/brevo@6.0.3': {}
 
-  '@hcaptcha/loader@2.4.2':
-    optional: true
+  '@hcaptcha/loader@2.4.2': {}
 
   '@hcaptcha/react-hcaptcha@1.17.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
@@ -3781,17 +3762,14 @@ snapshots:
       '@hcaptcha/loader': 2.4.2
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
-    optional: true
 
-  '@hcaptcha/react-hcaptcha@2.2.0':
-    optional: true
+  '@hcaptcha/react-hcaptcha@2.2.0': {}
 
   '@heroicons/react@2.2.0(react@19.2.0)':
     dependencies:
       react: 19.2.0
 
-  '@hexagon/base64@1.1.28':
-    optional: true
+  '@hexagon/base64@1.1.28': {}
 
   '@hookform/resolvers@5.9.1(@standard-schema/spec@1.1.0)(react-hook-form@7.87.0(react@19.2.0))(zod@4.5.4)':
     dependencies:
@@ -3800,7 +3778,6 @@ snapshots:
     optionalDependencies:
       '@standard-schema/spec': 1.1.0
       zod: 4.5.4
-    optional: true
 
   '@humanwhocodes/config-array@0.13.0':
     dependencies:
@@ -3916,14 +3893,12 @@ snapshots:
       '@instantdb/version': 1.0.67
       mutative: 1.3.0
       uuid: 11.1.1
-    optional: true
 
   '@instantdb/react-common@1.0.67(react@19.2.0)':
     dependencies:
       '@instantdb/core': 1.0.67
       '@instantdb/version': 1.0.67
       react: 19.2.0
-    optional: true
 
   '@instantdb/react@1.0.67(react@19.2.0)':
     dependencies:
@@ -3932,10 +3907,8 @@ snapshots:
       '@instantdb/version': 1.0.67
       eventsource: 4.1.1
       react: 19.2.0
-    optional: true
 
-  '@instantdb/version@1.0.67':
-    optional: true
+  '@instantdb/version@1.0.67': {}
 
   '@jridgewell/gen-mapping@0.3.13':
     dependencies:
@@ -3956,14 +3929,12 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.6.0
 
-  '@levischuck/tiny-cbor@0.2.11':
-    optional: true
+  '@levischuck/tiny-cbor@0.2.11': {}
 
   '@marsidev/react-turnstile@1.6.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
-    optional: true
 
   '@neondatabase/auth-ui@0.3.0-beta(b6bba8446fd54f92b4bc25c434cc8221)':
     dependencies:
@@ -4062,7 +4033,6 @@ snapshots:
       - vitest
       - vue
       - yup
-    optional: true
 
   '@neondatabase/auth@0.5.0-beta(c453f552518ec042c999aa27723686ea)':
     dependencies:
@@ -4129,7 +4099,6 @@ snapshots:
       - vitest
       - vue
       - yup
-    optional: true
 
   '@next/env@15.5.4': {}
 
@@ -4157,11 +4126,9 @@ snapshots:
   '@next/swc-win32-x64-msvc@15.5.4':
     optional: true
 
-  '@noble/ciphers@2.4.0':
-    optional: true
+  '@noble/ciphers@2.4.0': {}
 
-  '@noble/hashes@2.4.0':
-    optional: true
+  '@noble/hashes@2.4.0': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
@@ -4177,15 +4144,13 @@ snapshots:
 
   '@opentelemetry/api@1.9.0': {}
 
-  '@opentelemetry/semantic-conventions@1.43.0':
-    optional: true
+  '@opentelemetry/semantic-conventions@1.43.0': {}
 
   '@peculiar/asn1-android@2.9.4':
     dependencies:
       '@peculiar/asn1-schema': 2.9.4
       asn1js: 3.0.10
       tslib: 2.8.1
-    optional: true
 
   '@peculiar/asn1-cms@2.9.4':
     dependencies:
@@ -4194,7 +4159,6 @@ snapshots:
       '@peculiar/asn1-x509-attr': 2.9.4
       asn1js: 3.0.10
       tslib: 2.8.1
-    optional: true
 
   '@peculiar/asn1-csr@2.9.4':
     dependencies:
@@ -4202,7 +4166,6 @@ snapshots:
       '@peculiar/asn1-x509': 2.9.4
       asn1js: 3.0.10
       tslib: 2.8.1
-    optional: true
 
   '@peculiar/asn1-ecc@2.9.4':
     dependencies:
@@ -4210,7 +4173,6 @@ snapshots:
       '@peculiar/asn1-x509': 2.9.4
       asn1js: 3.0.10
       tslib: 2.8.1
-    optional: true
 
   '@peculiar/asn1-pfx@2.9.4':
     dependencies:
@@ -4220,7 +4182,6 @@ snapshots:
       '@peculiar/asn1-schema': 2.9.4
       asn1js: 3.0.10
       tslib: 2.8.1
-    optional: true
 
   '@peculiar/asn1-pkcs8@2.9.4':
     dependencies:
@@ -4228,7 +4189,6 @@ snapshots:
       '@peculiar/asn1-x509': 2.9.4
       asn1js: 3.0.10
       tslib: 2.8.1
-    optional: true
 
   '@peculiar/asn1-pkcs9@2.9.4':
     dependencies:
@@ -4240,7 +4200,6 @@ snapshots:
       '@peculiar/asn1-x509-attr': 2.9.4
       asn1js: 3.0.10
       tslib: 2.8.1
-    optional: true
 
   '@peculiar/asn1-rsa@2.9.4':
     dependencies:
@@ -4248,14 +4207,12 @@ snapshots:
       '@peculiar/asn1-x509': 2.9.4
       asn1js: 3.0.10
       tslib: 2.8.1
-    optional: true
 
   '@peculiar/asn1-schema@2.9.4':
     dependencies:
       '@peculiar/utils': 2.0.3
       asn1js: 3.0.10
       tslib: 2.8.1
-    optional: true
 
   '@peculiar/asn1-x509-attr@2.9.4':
     dependencies:
@@ -4263,7 +4220,6 @@ snapshots:
       '@peculiar/asn1-x509': 2.9.4
       asn1js: 3.0.10
       tslib: 2.8.1
-    optional: true
 
   '@peculiar/asn1-x509@2.9.4':
     dependencies:
@@ -4271,12 +4227,10 @@ snapshots:
       '@peculiar/utils': 2.0.3
       asn1js: 3.0.10
       tslib: 2.8.1
-    optional: true
 
   '@peculiar/utils@2.0.3':
     dependencies:
       tslib: 2.8.1
-    optional: true
 
   '@peculiar/x509@1.14.3':
     dependencies:
@@ -4291,15 +4245,12 @@ snapshots:
       reflect-metadata: 0.2.2
       tslib: 2.8.1
       tsyringe: 4.10.0
-    optional: true
 
   '@popperjs/core@2.11.8': {}
 
-  '@radix-ui/number@1.1.3':
-    optional: true
+  '@radix-ui/number@1.1.3': {}
 
-  '@radix-ui/primitive@1.1.7':
-    optional: true
+  '@radix-ui/primitive@1.1.7': {}
 
   '@radix-ui/react-arrow@1.1.15(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
@@ -4309,7 +4260,6 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.18
       '@types/react-dom': 19.2.7(@types/react@19.2.18)
-    optional: true
 
   '@radix-ui/react-avatar@1.2.6(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
@@ -4324,7 +4274,6 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.18
       '@types/react-dom': 19.2.7(@types/react@19.2.18)
-    optional: true
 
   '@radix-ui/react-checkbox@1.3.11(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
@@ -4340,7 +4289,6 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.18
       '@types/react-dom': 19.2.7(@types/react@19.2.18)
-    optional: true
 
   '@radix-ui/react-collection@1.1.15(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
@@ -4353,21 +4301,18 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.18
       '@types/react-dom': 19.2.7(@types/react@19.2.18)
-    optional: true
 
   '@radix-ui/react-compose-refs@1.1.5(@types/react@19.2.18)(react@19.2.0)':
     dependencies:
       react: 19.2.0
     optionalDependencies:
       '@types/react': 19.2.18
-    optional: true
 
   '@radix-ui/react-context@1.2.2(@types/react@19.2.18)(react@19.2.0)':
     dependencies:
       react: 19.2.0
     optionalDependencies:
       '@types/react': 19.2.18
-    optional: true
 
   '@radix-ui/react-dialog@1.1.23(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
@@ -4391,14 +4336,12 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.18
       '@types/react-dom': 19.2.7(@types/react@19.2.18)
-    optional: true
 
   '@radix-ui/react-direction@1.1.4(@types/react@19.2.18)(react@19.2.0)':
     dependencies:
       react: 19.2.0
     optionalDependencies:
       '@types/react': 19.2.18
-    optional: true
 
   '@radix-ui/react-dismissable-layer@1.1.19(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
@@ -4412,7 +4355,6 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.18
       '@types/react-dom': 19.2.7(@types/react@19.2.18)
-    optional: true
 
   '@radix-ui/react-dropdown-menu@2.1.24(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
@@ -4428,14 +4370,12 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.18
       '@types/react-dom': 19.2.7(@types/react@19.2.18)
-    optional: true
 
   '@radix-ui/react-focus-guards@1.1.6(@types/react@19.2.18)(react@19.2.0)':
     dependencies:
       react: 19.2.0
     optionalDependencies:
       '@types/react': 19.2.18
-    optional: true
 
   '@radix-ui/react-focus-scope@1.1.16(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
@@ -4447,7 +4387,6 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.18
       '@types/react-dom': 19.2.7(@types/react@19.2.18)
-    optional: true
 
   '@radix-ui/react-id@1.1.4(@types/react@19.2.18)(react@19.2.0)':
     dependencies:
@@ -4455,7 +4394,6 @@ snapshots:
       react: 19.2.0
     optionalDependencies:
       '@types/react': 19.2.18
-    optional: true
 
   '@radix-ui/react-label@2.1.15(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
@@ -4465,7 +4403,6 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.18
       '@types/react-dom': 19.2.7(@types/react@19.2.18)
-    optional: true
 
   '@radix-ui/react-menu@2.1.24(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
@@ -4492,7 +4429,6 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.18
       '@types/react-dom': 19.2.7(@types/react@19.2.18)
-    optional: true
 
   '@radix-ui/react-popper@1.3.7(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
@@ -4511,7 +4447,6 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.18
       '@types/react-dom': 19.2.7(@types/react@19.2.18)
-    optional: true
 
   '@radix-ui/react-portal@1.1.17(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
@@ -4522,7 +4457,6 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.18
       '@types/react-dom': 19.2.7(@types/react@19.2.18)
-    optional: true
 
   '@radix-ui/react-presence@1.1.10(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
@@ -4532,7 +4466,6 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.18
       '@types/react-dom': 19.2.7(@types/react@19.2.18)
-    optional: true
 
   '@radix-ui/react-primitive@2.1.10(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
@@ -4542,7 +4475,6 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.18
       '@types/react-dom': 19.2.7(@types/react@19.2.18)
-    optional: true
 
   '@radix-ui/react-roving-focus@1.1.19(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
@@ -4562,7 +4494,6 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.18
       '@types/react-dom': 19.2.7(@types/react@19.2.18)
-    optional: true
 
   '@radix-ui/react-select@2.3.7(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
@@ -4593,7 +4524,6 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.18
       '@types/react-dom': 19.2.7(@types/react@19.2.18)
-    optional: true
 
   '@radix-ui/react-separator@1.1.15(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
@@ -4603,7 +4533,6 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.18
       '@types/react-dom': 19.2.7(@types/react@19.2.18)
-    optional: true
 
   '@radix-ui/react-slot@1.3.3(@types/react@19.2.18)(react@19.2.0)':
     dependencies:
@@ -4611,7 +4540,6 @@ snapshots:
       react: 19.2.0
     optionalDependencies:
       '@types/react': 19.2.18
-    optional: true
 
   '@radix-ui/react-tabs@1.1.21(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
@@ -4628,7 +4556,6 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.18
       '@types/react-dom': 19.2.7(@types/react@19.2.18)
-    optional: true
 
   '@radix-ui/react-tooltip@1.2.16(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
@@ -4650,14 +4577,12 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.18
       '@types/react-dom': 19.2.7(@types/react@19.2.18)
-    optional: true
 
   '@radix-ui/react-use-callback-ref@1.1.4(@types/react@19.2.18)(react@19.2.0)':
     dependencies:
       react: 19.2.0
     optionalDependencies:
       '@types/react': 19.2.18
-    optional: true
 
   '@radix-ui/react-use-controllable-state@1.2.6(@types/react@19.2.18)(react@19.2.0)':
     dependencies:
@@ -4667,7 +4592,6 @@ snapshots:
       react: 19.2.0
     optionalDependencies:
       '@types/react': 19.2.18
-    optional: true
 
   '@radix-ui/react-use-effect-event@0.0.5(@types/react@19.2.18)(react@19.2.0)':
     dependencies:
@@ -4675,28 +4599,24 @@ snapshots:
       react: 19.2.0
     optionalDependencies:
       '@types/react': 19.2.18
-    optional: true
 
   '@radix-ui/react-use-is-hydrated@0.1.3(@types/react@19.2.18)(react@19.2.0)':
     dependencies:
       react: 19.2.0
     optionalDependencies:
       '@types/react': 19.2.18
-    optional: true
 
   '@radix-ui/react-use-layout-effect@1.1.4(@types/react@19.2.18)(react@19.2.0)':
     dependencies:
       react: 19.2.0
     optionalDependencies:
       '@types/react': 19.2.18
-    optional: true
 
   '@radix-ui/react-use-previous@1.1.4(@types/react@19.2.18)(react@19.2.0)':
     dependencies:
       react: 19.2.0
     optionalDependencies:
       '@types/react': 19.2.18
-    optional: true
 
   '@radix-ui/react-use-rect@1.1.4(@types/react@19.2.18)(react@19.2.0)':
     dependencies:
@@ -4704,7 +4624,6 @@ snapshots:
       react: 19.2.0
     optionalDependencies:
       '@types/react': 19.2.18
-    optional: true
 
   '@radix-ui/react-use-size@1.1.4(@types/react@19.2.18)(react@19.2.0)':
     dependencies:
@@ -4712,7 +4631,6 @@ snapshots:
       react: 19.2.0
     optionalDependencies:
       '@types/react': 19.2.18
-    optional: true
 
   '@radix-ui/react-visually-hidden@1.2.11(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
@@ -4722,36 +4640,29 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.18
       '@types/react-dom': 19.2.7(@types/react@19.2.18)
-    optional: true
 
-  '@radix-ui/rect@1.1.3':
-    optional: true
+  '@radix-ui/rect@1.1.3': {}
 
   '@react-email/body@0.3.0(react@19.2.0)':
     dependencies:
       react: 19.2.0
-    optional: true
 
   '@react-email/button@0.2.1(react@19.2.0)':
     dependencies:
       react: 19.2.0
-    optional: true
 
   '@react-email/code-block@0.2.1(react@19.2.0)':
     dependencies:
       prismjs: 1.30.0
       react: 19.2.0
-    optional: true
 
   '@react-email/code-inline@0.0.6(react@19.2.0)':
     dependencies:
       react: 19.2.0
-    optional: true
 
   '@react-email/column@0.0.14(react@19.2.0)':
     dependencies:
       react: 19.2.0
-    optional: true
 
   '@react-email/components@1.0.12(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
@@ -4778,58 +4689,47 @@ snapshots:
       react: 19.2.0
     transitivePeerDependencies:
       - react-dom
-    optional: true
 
   '@react-email/container@0.0.16(react@19.2.0)':
     dependencies:
       react: 19.2.0
-    optional: true
 
   '@react-email/font@0.0.10(react@19.2.0)':
     dependencies:
       react: 19.2.0
-    optional: true
 
   '@react-email/head@0.0.13(react@19.2.0)':
     dependencies:
       react: 19.2.0
-    optional: true
 
   '@react-email/heading@0.0.16(react@19.2.0)':
     dependencies:
       react: 19.2.0
-    optional: true
 
   '@react-email/hr@0.0.12(react@19.2.0)':
     dependencies:
       react: 19.2.0
-    optional: true
 
   '@react-email/html@0.0.12(react@19.2.0)':
     dependencies:
       react: 19.2.0
-    optional: true
 
   '@react-email/img@0.0.12(react@19.2.0)':
     dependencies:
       react: 19.2.0
-    optional: true
 
   '@react-email/link@0.0.13(react@19.2.0)':
     dependencies:
       react: 19.2.0
-    optional: true
 
   '@react-email/markdown@0.0.18(react@19.2.0)':
     dependencies:
       marked: 15.0.12
       react: 19.2.0
-    optional: true
 
   '@react-email/preview@0.0.14(react@19.2.0)':
     dependencies:
       react: 19.2.0
-    optional: true
 
   '@react-email/render@1.1.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
@@ -4845,17 +4745,14 @@ snapshots:
       prettier: 3.9.6
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
-    optional: true
 
   '@react-email/row@0.0.13(react@19.2.0)':
     dependencies:
       react: 19.2.0
-    optional: true
 
   '@react-email/section@0.0.17(react@19.2.0)':
     dependencies:
       react: 19.2.0
-    optional: true
 
   '@react-email/tailwind@2.0.7(@react-email/body@0.3.0(react@19.2.0))(@react-email/button@0.2.1(react@19.2.0))(@react-email/code-block@0.2.1(react@19.2.0))(@react-email/code-inline@0.0.6(react@19.2.0))(@react-email/container@0.0.16(react@19.2.0))(@react-email/heading@0.0.16(react@19.2.0))(@react-email/hr@0.0.12(react@19.2.0))(@react-email/img@0.0.12(react@19.2.0))(@react-email/link@0.0.13(react@19.2.0))(@react-email/preview@0.0.14(react@19.2.0))(@react-email/text@0.1.6(react@19.2.0))(react@19.2.0)':
     dependencies:
@@ -4873,20 +4770,17 @@ snapshots:
       '@react-email/img': 0.0.12(react@19.2.0)
       '@react-email/link': 0.0.13(react@19.2.0)
       '@react-email/preview': 0.0.14(react@19.2.0)
-    optional: true
 
   '@react-email/text@0.1.6(react@19.2.0)':
     dependencies:
       react: 19.2.0
-    optional: true
 
   '@selderee/plugin-htmlparser2@0.11.0':
     dependencies:
       domhandler: 5.0.3
       selderee: 0.11.0
 
-  '@simplewebauthn/browser@13.3.0':
-    optional: true
+  '@simplewebauthn/browser@13.3.0': {}
 
   '@simplewebauthn/server@13.3.3':
     dependencies:
@@ -4898,7 +4792,6 @@ snapshots:
       '@peculiar/asn1-schema': 2.9.4
       '@peculiar/asn1-x509': 2.9.4
       '@peculiar/x509': 1.14.3
-    optional: true
 
   '@smithy/core@3.33.3':
     dependencies:
@@ -4933,11 +4826,9 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@standard-schema/spec@1.1.0':
-    optional: true
+  '@standard-schema/spec@1.1.0': {}
 
-  '@standard-schema/utils@0.3.0':
-    optional: true
+  '@standard-schema/utils@0.3.0': {}
 
   '@stripe/stripe-js@8.11.0': {}
 
@@ -4948,7 +4839,6 @@ snapshots:
   '@supabase/auth-js@2.79.0':
     dependencies:
       tslib: 2.8.1
-    optional: true
 
   '@supabase/functions-js@2.116.0':
     dependencies:
@@ -5062,14 +4952,12 @@ snapshots:
       postcss: 8.5.28
       tailwindcss: 4.3.3
 
-  '@tanstack/query-core@5.102.8':
-    optional: true
+  '@tanstack/query-core@5.102.8': {}
 
   '@tanstack/react-query@5.102.8(react@19.2.0)':
     dependencies:
       '@tanstack/query-core': 5.102.8
       react: 19.2.0
-    optional: true
 
   '@tindevelopers/base-core@0.2.0-rc.4(@neondatabase/auth@0.5.0-beta(c453f552518ec042c999aa27723686ea))(@opentelemetry/api@1.9.0)(@types/node@22.20.1)(drizzle-orm@0.45.2(@opentelemetry/api@1.9.0)(@types/pg@8.23.1)(kysely@0.29.5)(pg@8.23.0))(next@15.5.4(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sswr@2.2.0(svelte@5.57.0))(svelte@5.57.0)(vue@3.5.42(typescript@5.9.3))':
     dependencies:
@@ -5146,7 +5034,6 @@ snapshots:
       - lmdb
       - typescript
       - uuidv7
-    optional: true
 
   '@triplit/db@1.1.10(typescript@5.9.3)':
     dependencies:
@@ -5158,12 +5045,10 @@ snapshots:
       web-worker: 1.5.0
     transitivePeerDependencies:
       - typescript
-    optional: true
 
   '@triplit/logger@0.0.3(typescript@5.9.3)':
     dependencies:
       typescript: 5.9.3
-    optional: true
 
   '@triplit/react@1.0.51(react@19.2.0)(typescript@5.9.3)':
     dependencies:
@@ -5175,7 +5060,6 @@ snapshots:
       - lmdb
       - typescript
       - uuidv7
-    optional: true
 
   '@types/diff-match-patch@1.0.36': {}
 
@@ -5271,7 +5155,6 @@ snapshots:
       warning: 4.0.3
     optionalDependencies:
       '@types/react': 19.2.18
-    optional: true
 
   '@workos-inc/node@10.13.0': {}
 
@@ -5332,7 +5215,6 @@ snapshots:
   aria-hidden@1.2.6:
     dependencies:
       tslib: 2.8.1
-    optional: true
 
   aria-query@5.3.1: {}
 
@@ -5345,7 +5227,6 @@ snapshots:
       pvtsutils: 1.3.6
       pvutils: 1.2.0
       tslib: 2.8.1
-    optional: true
 
   assert-plus@1.0.0: {}
 
@@ -5393,7 +5274,6 @@ snapshots:
     transitivePeerDependencies:
       - '@cloudflare/workers-types'
       - '@opentelemetry/api'
-    optional: true
 
   better-call@1.3.7(zod@4.5.4):
     dependencies:
@@ -5403,7 +5283,6 @@ snapshots:
       set-cookie-parser: 3.1.2
     optionalDependencies:
       zod: 4.5.4
-    optional: true
 
   better-call@2.0.2(zod@4.5.4):
     dependencies:
@@ -5413,7 +5292,6 @@ snapshots:
       set-cookie-parser: 3.1.2
     optionalDependencies:
       zod: 4.5.4
-    optional: true
 
   bluebird@3.7.2: {}
 
@@ -5445,7 +5323,6 @@ snapshots:
   class-variance-authority@0.7.1:
     dependencies:
       clsx: 2.1.1
-    optional: true
 
   client-only@0.0.1: {}
 
@@ -5461,18 +5338,15 @@ snapshots:
     dependencies:
       delayed-stream: 1.0.0
 
-  comlink@4.4.2:
-    optional: true
+  comlink@4.4.2: {}
 
   concat-map@0.0.1: {}
 
   cookie@1.1.1: {}
 
-  copy-anything@4.1.0:
-    optional: true
+  copy-anything@4.1.0: {}
 
-  core-js@3.50.0:
-    optional: true
+  core-js@3.50.0: {}
 
   core-util-is@1.0.2: {}
 
@@ -5496,20 +5370,17 @@ snapshots:
 
   deepmerge@4.3.1: {}
 
-  defu@6.1.7:
-    optional: true
+  defu@6.1.7: {}
 
   delayed-stream@1.0.0: {}
 
   dequal@2.0.3: {}
 
-  detect-europe-js@0.1.2:
-    optional: true
+  detect-europe-js@0.1.2: {}
 
   detect-libc@2.1.2: {}
 
-  detect-node-es@1.1.0:
-    optional: true
+  detect-node-es@1.1.0: {}
 
   devalue@5.9.2: {}
 
@@ -5558,8 +5429,7 @@ snapshots:
       jsbn: 0.1.1
       safer-buffer: 2.1.2
 
-  elen@1.0.10:
-    optional: true
+  elen@1.0.10: {}
 
   enhanced-resolve@5.24.5:
     dependencies:
@@ -5667,13 +5537,11 @@ snapshots:
 
   eventsource-parser@1.1.2: {}
 
-  eventsource-parser@3.1.1:
-    optional: true
+  eventsource-parser@3.1.1: {}
 
   eventsource@4.1.1:
     dependencies:
       eventsource-parser: 3.1.1
-    optional: true
 
   extend@3.0.2: {}
 
@@ -5750,8 +5618,7 @@ snapshots:
       hasown: 2.0.4
       math-intrinsics: 1.1.0
 
-  get-nonce@1.0.1:
-    optional: true
+  get-nonce@1.0.1: {}
 
   get-proto@1.0.1:
     dependencies:
@@ -5807,7 +5674,6 @@ snapshots:
   hoist-non-react-statics@3.3.2:
     dependencies:
       react-is: 16.13.1
-    optional: true
 
   html-to-text@9.0.5:
     dependencies:
@@ -5856,7 +5722,6 @@ snapshots:
     dependencies:
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
-    optional: true
 
   is-extglob@2.1.1: {}
 
@@ -5870,8 +5735,7 @@ snapshots:
     dependencies:
       '@types/estree': 1.0.9
 
-  is-standalone-pwa@0.1.1:
-    optional: true
+  is-standalone-pwa@0.1.1: {}
 
   is-typedarray@1.0.0: {}
 
@@ -5881,11 +5745,9 @@ snapshots:
 
   jiti@2.7.0: {}
 
-  jose@6.2.5:
-    optional: true
+  jose@6.2.5: {}
 
-  js-tokens@4.0.0:
-    optional: true
+  js-tokens@4.0.0: {}
 
   js-yaml@4.3.2:
     dependencies:
@@ -5920,8 +5782,7 @@ snapshots:
     dependencies:
       json-buffer: 3.0.1
 
-  kysely@0.29.5:
-    optional: true
+  kysely@0.29.5: {}
 
   leac@0.6.0: {}
 
@@ -5990,19 +5851,16 @@ snapshots:
   loose-envify@1.4.0:
     dependencies:
       js-tokens: 4.0.0
-    optional: true
 
   lucide-react@0.555.0(react@19.2.0):
     dependencies:
       react: 19.2.0
-    optional: true
 
   magic-string@0.30.21:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.6.0
 
-  marked@15.0.12:
-    optional: true
+  marked@15.0.12: {}
 
   math-intrinsics@1.1.0: {}
 
@@ -6018,16 +5876,13 @@ snapshots:
 
   ms@2.1.3: {}
 
-  mutative@1.3.0:
-    optional: true
+  mutative@1.3.0: {}
 
   nanoid@3.3.18: {}
 
-  nanoid@5.1.16:
-    optional: true
+  nanoid@5.1.16: {}
 
-  nanostores@1.5.3:
-    optional: true
+  nanostores@1.5.3: {}
 
   natural-compare@1.4.0: {}
 
@@ -6035,7 +5890,6 @@ snapshots:
     dependencies:
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
-    optional: true
 
   next@15.5.4(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
     dependencies:
@@ -6069,8 +5923,7 @@ snapshots:
 
   oauth-sign@0.9.0: {}
 
-  object-assign@4.1.1:
-    optional: true
+  object-assign@4.1.1: {}
 
   once@1.4.0:
     dependencies:
@@ -6189,15 +6042,13 @@ snapshots:
 
   prettier@3.9.6: {}
 
-  prismjs@1.30.0:
-    optional: true
+  prismjs@1.30.0: {}
 
   prop-types@15.8.1:
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       react-is: 16.13.1
-    optional: true
 
   psl@1.15.0:
     dependencies:
@@ -6208,13 +6059,10 @@ snapshots:
   pvtsutils@1.3.6:
     dependencies:
       tslib: 2.8.1
-    optional: true
 
-  pvutils@1.2.0:
-    optional: true
+  pvutils@1.2.0: {}
 
-  qrcode-generator@2.0.4:
-    optional: true
+  qrcode-generator@2.0.4: {}
 
   qs@6.5.5: {}
 
@@ -6225,7 +6073,6 @@ snapshots:
       hoist-non-react-statics: 3.3.2
       prop-types: 15.8.1
       react: 19.2.0
-    optional: true
 
   react-dom@19.2.0(react@19.2.0):
     dependencies:
@@ -6237,15 +6084,12 @@ snapshots:
       prop-types: 15.8.1
       react: 19.2.0
       react-async-script: 1.2.0(react@19.2.0)
-    optional: true
 
   react-hook-form@7.87.0(react@19.2.0):
     dependencies:
       react: 19.2.0
-    optional: true
 
-  react-is@16.13.1:
-    optional: true
+  react-is@16.13.1: {}
 
   react-promise-suspense@0.3.4:
     dependencies:
@@ -6256,7 +6100,6 @@ snapshots:
       prop-types: 15.8.1
       qrcode-generator: 2.0.4
       react: 19.2.0
-    optional: true
 
   react-remove-scroll-bar@2.3.8(@types/react@19.2.18)(react@19.2.0):
     dependencies:
@@ -6265,7 +6108,6 @@ snapshots:
       tslib: 2.8.1
     optionalDependencies:
       '@types/react': 19.2.18
-    optional: true
 
   react-remove-scroll@2.7.2(@types/react@19.2.18)(react@19.2.0):
     dependencies:
@@ -6277,7 +6119,6 @@ snapshots:
       use-sidecar: 1.1.3(@types/react@19.2.18)(react@19.2.0)
     optionalDependencies:
       '@types/react': 19.2.18
-    optional: true
 
   react-style-singleton@2.2.3(@types/react@19.2.18)(react@19.2.0):
     dependencies:
@@ -6286,12 +6127,10 @@ snapshots:
       tslib: 2.8.1
     optionalDependencies:
       '@types/react': 19.2.18
-    optional: true
 
   react@19.2.0: {}
 
-  reflect-metadata@0.2.2:
-    optional: true
+  reflect-metadata@0.2.2: {}
 
   request@2.88.2:
     dependencies:
@@ -6337,8 +6176,7 @@ snapshots:
     dependencies:
       glob: 7.2.3
 
-  rou3@0.7.12:
-    optional: true
+  rou3@0.7.12: {}
 
   run-parallel@1.2.0:
     dependencies:
@@ -6361,8 +6199,7 @@ snapshots:
 
   server-only@0.0.1: {}
 
-  set-cookie-parser@3.1.2:
-    optional: true
+  set-cookie-parser@3.1.2: {}
 
   sharp@0.34.5:
     dependencies:
@@ -6408,10 +6245,8 @@ snapshots:
       react-dom: 19.2.0(react@19.2.0)
     optionalDependencies:
       '@types/react': 19.2.18
-    optional: true
 
-  sorted-btree@1.8.1:
-    optional: true
+  sorted-btree@1.8.1: {}
 
   source-map-js@1.2.1: {}
 
@@ -6452,7 +6287,6 @@ snapshots:
   superjson@2.2.6:
     dependencies:
       copy-anything: 4.1.0
-    optional: true
 
   supports-color@7.2.0:
     dependencies:
@@ -6494,11 +6328,9 @@ snapshots:
 
   tailwind-merge@2.6.1: {}
 
-  tailwind-merge@3.6.0:
-    optional: true
+  tailwind-merge@3.6.0: {}
 
-  tailwindcss@4.2.1:
-    optional: true
+  tailwindcss@4.2.1: {}
 
   tailwindcss@4.3.3: {}
 
@@ -6515,22 +6347,19 @@ snapshots:
 
   tr46@0.0.3: {}
 
-  tslib@1.14.1:
-    optional: true
+  tslib@1.14.1: {}
 
   tslib@2.8.1: {}
 
   tsyringe@4.10.0:
     dependencies:
       tslib: 1.14.1
-    optional: true
 
   tunnel-agent@0.6.0:
     dependencies:
       safe-buffer: 5.2.1
 
-  tw-animate-css@1.4.0:
-    optional: true
+  tw-animate-css@1.4.0: {}
 
   tweetnacl@0.14.5: {}
 
@@ -6542,15 +6371,13 @@ snapshots:
 
   typescript@5.9.3: {}
 
-  ua-is-frozen@0.1.2:
-    optional: true
+  ua-is-frozen@0.1.2: {}
 
   ua-parser-js@2.0.10:
     dependencies:
       detect-europe-js: 0.1.2
       is-standalone-pwa: 0.1.1
       ua-is-frozen: 0.1.2
-    optional: true
 
   undici-types@5.26.5: {}
 
@@ -6566,7 +6393,6 @@ snapshots:
       tslib: 2.8.1
     optionalDependencies:
       '@types/react': 19.2.18
-    optional: true
 
   use-sidecar@1.1.3(@types/react@19.2.18)(react@19.2.0):
     dependencies:
@@ -6575,14 +6401,12 @@ snapshots:
       tslib: 2.8.1
     optionalDependencies:
       '@types/react': 19.2.18
-    optional: true
 
   use-sync-external-store@1.6.0(react@19.2.0):
     dependencies:
       react: 19.2.0
 
-  uuid@11.1.1:
-    optional: true
+  uuid@11.1.1: {}
 
   uuid@3.4.0: {}
 
@@ -6594,7 +6418,6 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
       - '@types/react-dom'
-    optional: true
 
   verror@1.10.0:
     dependencies:
@@ -6615,12 +6438,10 @@ snapshots:
   warning@4.0.3:
     dependencies:
       loose-envify: 1.4.0
-    optional: true
 
   web-streams-polyfill@4.0.0-beta.3: {}
 
-  web-worker@1.5.0:
-    optional: true
+  web-worker@1.5.0: {}
 
   webidl-conversions@3.0.1: {}
 
@@ -6647,7 +6468,6 @@ snapshots:
     dependencies:
       zod: 4.5.4
 
-  zod@4.3.6:
-    optional: true
+  zod@4.3.6: {}
 
   zod@4.5.4: {}

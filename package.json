@@ -17,6 +17,7 @@
   "dependencies": {
     "@base/core": "npm:@tindevelopers/base-core@0.2.0-rc.4",
     "@getbrevo/brevo": "^6.0.3",
+    "@neondatabase/auth": "0.5.0-beta",
     "@tindevelopers/base-core": "0.2.0-rc.4",
     "@tindevelopers/control-plane": "0.2.0-rc.4",
     "@tindevelopers/platform-core": "0.3.0-rc.4",

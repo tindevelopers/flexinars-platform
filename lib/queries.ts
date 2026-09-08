@@ -98,6 +98,80 @@ export async function getCourses(): Promise<CourseOption[]> {
   );
 }
 
+export interface CourseListRow {
+  id: string;
+  title: string;
+  speaker: string;
+  topic: string;
+  ce_credits: string; // NUMERIC returned as string by pg
+  is_active: boolean;
+  question_count: number;
+  enrollment_count: number;
+}
+
+/** Full course catalog with question + enrollment counts (course management list). */
+export async function getCoursesList(): Promise<CourseListRow[]> {
+  return query<CourseListRow>(
+    `SELECT c.id, c.title, c.speaker, c.topic, c.ce_credits, c.is_active,
+            COALESCE(q.cnt, 0)::int AS question_count,
+            COALESCE(e.cnt, 0)::int AS enrollment_count
+     FROM courses c
+     LEFT JOIN (SELECT course_id, COUNT(*) cnt FROM course_questions GROUP BY course_id) q
+       ON q.course_id = c.id
+     LEFT JOIN (SELECT course_id, COUNT(*) cnt FROM enrollments GROUP BY course_id) e
+       ON e.course_id = c.id
+     ORDER BY c.created_at DESC`
+  );
+}
+
+export interface CourseQuestion {
+  id?: string;
+  position: number;
+  question_text: string;
+  correct_answer: boolean;
+  rationale: string;
+}
+
+export interface CourseDetail {
+  id: string;
+  tenant_id: string;
+  title: string;
+  provider: string;
+  speaker: string;
+  topic: string;
+  video_url: string;
+  video_platform: string;
+  ce_credits: string;
+  passing_score: number;
+  is_active: boolean;
+  questions: CourseQuestion[];
+}
+
+/** One course plus its ordered questions (course edit page). */
+export async function getCourseById(id: string): Promise<CourseDetail | null> {
+  const courses = await query<Omit<CourseDetail, "questions">>(
+    `SELECT id, tenant_id, title, provider, speaker, topic, video_url,
+            video_platform, ce_credits, passing_score, is_active
+     FROM courses WHERE id = $1`,
+    [id]
+  );
+  if (courses.length === 0) return null;
+  const questions = await query<CourseQuestion>(
+    `SELECT id, position, question_text, correct_answer, rationale
+     FROM course_questions WHERE course_id = $1 ORDER BY position ASC`,
+    [id]
+  );
+  return { ...courses[0], questions };
+}
+
+/** Resolve the default (Global Flexinars) tenant id for new courses. */
+export async function getDefaultTenantId(): Promise<string | null> {
+  const rows = await query<{ id: string }>(
+    `SELECT id FROM tenants ORDER BY created_at ASC LIMIT 1`
+  );
+  return rows[0]?.id ?? null;
+}
+
 /** Tenants with enrollment / course counts. */
 export async function getTenants(): Promise<TenantRow[]> {
   return query<TenantRow>(

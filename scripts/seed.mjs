@@ -41,49 +41,114 @@ async function main() {
   }
   const tenantId = tenant.id;
 
-  // 2) Course
+  // 2) Course — "Bruxism Reframed" (real spec content). Idempotent: match any
+  //    existing Bruxism Reframed course for this tenant and update it in place,
+  //    otherwise insert. Then reset the 5 T/F questions to the exact spec text.
+  const COURSE = {
+    title:
+      "Bruxism Reframed: From Occlusion to Central Physiology (Sleep & Awake)",
+    provider: "Global Flexinars Inc.",
+    speaker: "Dr. Igor Pesun",
+    topic:
+      "Bruxism Reframed: From Occlusion to Central Physiology (Sleep & Awake)",
+    video_url: "https://share.synthesia.io/235b7e80-5208-4063-806a-a8d8ffb97bc8",
+    video_platform: "synthesia",
+    ce_credits: 1.0,
+    passing_score: 60,
+    is_active: true,
+  };
+
+  const QUESTIONS = [
+    [
+      "Bruxism is primarily caused by occlusal interferences.",
+      false,
+      "Current literature describes bruxism as primarily centrally mediated rather than initiated by occlusal interferences. Occlusion influences how forces are distributed, but it is not considered the primary driver of bruxism.",
+    ],
+    [
+      "Sleep bruxism and awake bruxism are distinct behaviors with different underlying mechanisms.",
+      true,
+      "Sleep bruxism is associated with central nervous system activity and sleep arousals, while awake bruxism is more behavioral and associated with stress, awareness, and waking jaw-muscle activity.",
+    ],
+    [
+      "Bruxism is always pathological and requires clinical intervention.",
+      false,
+      "Bruxism is not necessarily a disorder. Depending on the individual and clinical context, it may be innocuous, represent a risk factor, or have potentially protective physiologic associations. Management should be based on clinical consequences and risk.",
+    ],
+    [
+      "A single clinical examination is sufficient to accurately determine a patient's current bruxism activity.",
+      false,
+      "Bruxism activity can vary considerably over time. Tooth wear is cumulative, patient reports may be unreliable, and a single clinical examination provides only a snapshot. Assessment should incorporate history, clinical findings, risk factors, and repeated evaluation when appropriate.",
+    ],
+    [
+      "In restorative and implant treatment planning, the primary goal is to eliminate bruxism through occlusal adjustment.",
+      false,
+      "Occlusal adjustment does not eliminate the centrally mediated activity responsible for bruxism. The restorative goal is to manage biomechanical risk through treatment planning, material selection, occlusal design, load distribution, and protective strategies when indicated.",
+    ],
+  ];
+
   let course = (
     await client.query(
-      "SELECT id FROM courses WHERE tenant_id = $1 AND title = $2 LIMIT 1",
-      [tenantId, "Bruxism Reframed: A Modern Clinical Approach"]
+      "SELECT id FROM courses WHERE tenant_id = $1 AND title ILIKE 'Bruxism Reframed%' LIMIT 1",
+      [tenantId]
     )
   ).rows[0];
+
   if (!course) {
     course = (
       await client.query(
-        `INSERT INTO courses (tenant_id, title, provider, speaker, topic, video_url, video_platform, ce_credits, passing_score)
-         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING id`,
+        `INSERT INTO courses (tenant_id, title, provider, speaker, topic, video_url, video_platform, ce_credits, passing_score, is_active)
+         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING id`,
         [
           tenantId,
-          "Bruxism Reframed: A Modern Clinical Approach",
-          "Global Flexinars Inc.",
-          "Dr. Jane Mercer, DDS",
-          "Bruxism & Occlusal Health",
-          "https://share.synthesia.io/embed/sample-bruxism-reframed",
-          "synthesia",
-          1.0,
-          60,
+          COURSE.title,
+          COURSE.provider,
+          COURSE.speaker,
+          COURSE.topic,
+          COURSE.video_url,
+          COURSE.video_platform,
+          COURSE.ce_credits,
+          COURSE.passing_score,
+          COURSE.is_active,
         ]
       )
     ).rows[0];
-    const questions = [
-      ["Bruxism is exclusively caused by dental malocclusion.", false, "Bruxism is multifactorial; sleep and stress factors play a major role."],
-      ["Sleep bruxism is considered a centrally mediated sleep-related movement disorder.", true, "Current evidence classifies sleep bruxism as centrally mediated."],
-      ["Occlusal splints permanently cure bruxism.", false, "Splints protect dentition and manage symptoms but do not cure bruxism."],
-    ];
-    for (let i = 0; i < questions.length; i++) {
-      const [q, ans, rat] = questions[i];
-      await client.query(
-        `INSERT INTO course_questions (course_id, position, question_text, correct_answer, rationale)
-         VALUES ($1,$2,$3,$4,$5)`,
-        [course.id, i + 1, q, ans, rat]
-      );
-    }
-    console.log("created course + questions", course.id);
+    console.log("created Bruxism course", course.id);
   } else {
-    console.log("course exists", course.id);
+    await client.query(
+      `UPDATE courses SET title=$2, provider=$3, speaker=$4, topic=$5,
+         video_url=$6, video_platform=$7, ce_credits=$8, passing_score=$9,
+         is_active=$10, updated_at=now()
+       WHERE id=$1`,
+      [
+        course.id,
+        COURSE.title,
+        COURSE.provider,
+        COURSE.speaker,
+        COURSE.topic,
+        COURSE.video_url,
+        COURSE.video_platform,
+        COURSE.ce_credits,
+        COURSE.passing_score,
+        COURSE.is_active,
+      ]
+    );
+    console.log("updated Bruxism course", course.id);
   }
   const courseId = course.id;
+
+  // Reset questions to the exact 5-question spec (idempotent).
+  await client.query("DELETE FROM course_questions WHERE course_id = $1", [
+    courseId,
+  ]);
+  for (let i = 0; i < QUESTIONS.length; i++) {
+    const [q, ans, rat] = QUESTIONS[i];
+    await client.query(
+      `INSERT INTO course_questions (course_id, position, question_text, correct_answer, rationale)
+       VALUES ($1,$2,$3,$4,$5)`,
+      [courseId, i + 1, q, ans, rat]
+    );
+  }
+  console.log("seeded 5 quiz questions for course", courseId);
 
   // 3) Demo enrollments across statuses
   const demo = [
