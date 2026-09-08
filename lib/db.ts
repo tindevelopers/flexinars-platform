@@ -26,17 +26,38 @@ function createPool(): Pool {
   });
 }
 
-export const pool: Pool = global.__gfPgPool ?? createPool();
-if (process.env.NODE_ENV !== "production") {
-  global.__gfPgPool = pool;
+/**
+ * Lazily resolve the pool. createPool() (which reads DATABASE_URL) is only
+ * invoked on the first query at request time — never at module-evaluation
+ * time. This keeps the Next.js build's "Collecting page data" step from
+ * throwing when DATABASE_URL is not injected during that phase.
+ */
+function getPool(): Pool {
+  if (!global.__gfPgPool) {
+    global.__gfPgPool = createPool();
+  }
+  return global.__gfPgPool;
 }
+
+/**
+ * Back-compat accessor. Any property access proxies to the lazily-created
+ * pool, so existing `pool.connect()` / `pool.query()` call-sites keep working
+ * without eager instantiation at import time.
+ */
+export const pool: Pool = new Proxy({} as Pool, {
+  get(_target, prop) {
+    const p = getPool();
+    const value = p[prop as keyof Pool];
+    return typeof value === "function" ? value.bind(p) : value;
+  },
+});
 
 /** Run a parameterized query and return typed rows. */
 export async function query<T extends QueryResultRow = QueryResultRow>(
   text: string,
   params: unknown[] = []
 ): Promise<T[]> {
-  const res = await pool.query<T>(text, params as never);
+  const res = await getPool().query<T>(text, params as never);
   return res.rows;
 }
 
@@ -47,7 +68,7 @@ export async function query<T extends QueryResultRow = QueryResultRow>(
 export async function withTransaction<T>(
   fn: (client: PoolClient) => Promise<T>
 ): Promise<T> {
-  const client = await pool.connect();
+  const client = await getPool().connect();
   try {
     await client.query("BEGIN");
     const result = await fn(client);
