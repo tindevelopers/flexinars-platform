@@ -13,14 +13,13 @@ import {
 const navigation: { main: ShellNavItem[]; support: ShellNavItem[]; others: ShellNavItem[] } = {
   main: [
     { name: "Dashboard", path: "/" },
-    { name: "Users", path: "/users" },
+    { name: "Courses", path: "/courses" },
+    { name: "Learners", path: "/learners" },
     { name: "Tenants", path: "/tenants" },
-    { name: "Roles", path: "/roles" },
-    { name: "Workspaces", path: "/workspaces" },
-    { name: "Audit Logs", path: "/audit-logs" },
+    { name: "Reports", path: "/reports" },
   ],
-  support: [{ name: "Support", path: "/support" }],
-  others: [{ name: "Settings", path: "/settings" }],
+  support: [],
+  others: [],
 };
 
 const branding = {

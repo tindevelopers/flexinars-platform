@@ -16,16 +16,18 @@
   },
   "dependencies": {
     "@base/core": "npm:@tindevelopers/base-core@0.2.0-rc.4",
+    "@getbrevo/brevo": "^6.0.3",
     "@tindevelopers/base-core": "0.2.0-rc.4",
     "@tindevelopers/control-plane": "0.2.0-rc.4",
-    "@tindevelopers/ui-shell": "0.2.0-rc.4",
     "@tindevelopers/platform-core": "0.3.0-rc.4",
     "@tindevelopers/platform-schema": "0.3.0-rc.4",
     "@tindevelopers/platform-ui": "0.3.0-rc.4",
+    "@tindevelopers/ui-shell": "0.2.0-rc.4",
     "next": "15.5.4",
     "pg": "^8.13.1",
     "react": "19.2.0",
-    "react-dom": "19.2.0"
+    "react-dom": "19.2.0",
+    "server-only": "^0.0.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.13",
@@ -33,6 +35,7 @@
     "@types/pg": "^8.11.10",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
+    "dotenv": "^17.4.2",
     "tailwindcss": "^4.1.13",
     "typescript": "^5.9.2"
   }
