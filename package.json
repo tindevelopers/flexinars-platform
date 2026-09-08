@@ -24,7 +24,7 @@
     "@tindevelopers/platform-schema": "0.3.0-rc.4",
     "@tindevelopers/platform-ui": "0.3.0-rc.4",
     "@tindevelopers/ui-shell": "0.2.0-rc.4",
-    "next": "15.5.4",
+    "next": "15.5.25",
     "pg": "^8.13.1",
     "react": "19.2.0",
     "react-dom": "19.2.0",
