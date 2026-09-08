@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { type CSSProperties } from "react";
 import {
   AdminLayout,
   AppSidebar,
@@ -9,6 +9,8 @@ import {
   ThemeProvider,
   type ShellNavItem,
 } from "@tindevelopers/ui-shell";
+
+const DEFAULT_BRAND = "#4F46E5";
 
 const navigation: { main: ShellNavItem[]; support: ShellNavItem[]; others: ShellNavItem[] } = {
   main: [
@@ -32,16 +34,35 @@ const branding = {
  * Client-side admin shell wrapper. Composes the shell providers with the
  * AdminLayout + AppSidebar + AppHeader from @tindevelopers/ui-shell.
  */
-export default function AppShell({ children }: { children: React.ReactNode }) {
+export default function AppShell({
+  children,
+  brandColor = DEFAULT_BRAND,
+}: {
+  children: React.ReactNode;
+  brandColor?: string;
+}) {
   return (
     <ThemeProvider>
       <SidebarProvider>
-        <AdminLayout
-          sidebar={<AppSidebar navigation={navigation} branding={branding} />}
-          header={<AppHeader branding={branding} />}
+        <div
+          className="flex min-h-screen flex-col"
+          style={{ "--brand": brandColor } as CSSProperties}
         >
-          {children}
-        </AdminLayout>
+          {/* Per-tenant brand accent strip across the top of the admin shell. */}
+          <div
+            className="h-1 w-full shrink-0"
+            style={{ backgroundColor: "var(--brand)" }}
+            aria-hidden
+          />
+          <div className="flex-1">
+            <AdminLayout
+              sidebar={<AppSidebar navigation={navigation} branding={branding} />}
+              header={<AppHeader branding={branding} />}
+            >
+              {children}
+            </AdminLayout>
+          </div>
+        </div>
       </SidebarProvider>
     </ThemeProvider>
   );

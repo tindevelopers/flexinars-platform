@@ -21,25 +21,60 @@ const client = new pg.Client({
 async function main() {
   await client.connect();
 
-  // 1) Tenant
-  let tenant = (
-    await client.query("SELECT id FROM tenants WHERE name = $1 LIMIT 1", [
-      "Global Flexinars Inc.",
-    ])
-  ).rows[0];
-  if (!tenant) {
-    tenant = (
+  // 1) Tenants — idempotent upsert with Phase 5 branding (subdomain/slug/brand).
+  //    Match an existing row by name first (pre-Phase-5 rows have NULL
+  //    subdomain, so ON CONFLICT (subdomain) would not catch them and could
+  //    create a duplicate); otherwise insert, with ON CONFLICT (subdomain) as a
+  //    safety net for fresh databases.
+  async function upsertTenant({ name, slug, subdomain, brand_color, logo_url = null }) {
+    const existing = (
+      await client.query("SELECT id FROM tenants WHERE name = $1 LIMIT 1", [name])
+    ).rows[0];
+    if (existing) {
       await client.query(
-        `INSERT INTO tenants (name, domain, status, plan, region)
-         VALUES ($1,$2,$3,$4,$5) RETURNING id`,
-        ["Global Flexinars Inc.", "globalflexinars.com", "active", "pro", "us-east"]
+        `UPDATE tenants
+           SET slug = $2, subdomain = $3, brand_color = $4, logo_url = $5, updated_at = now()
+         WHERE id = $1`,
+        [existing.id, slug, subdomain, brand_color, logo_url]
+      );
+      console.log("updated tenant", name, existing.id);
+      return existing.id;
+    }
+    const row = (
+      await client.query(
+        `INSERT INTO tenants (name, domain, status, plan, region, slug, subdomain, brand_color, logo_url)
+         VALUES ($1,$2,'active','pro','us-east',$3,$4,$5,$6)
+         ON CONFLICT (subdomain) DO UPDATE
+           SET name = EXCLUDED.name, slug = EXCLUDED.slug,
+               brand_color = EXCLUDED.brand_color, logo_url = EXCLUDED.logo_url,
+               updated_at = now()
+         RETURNING id`,
+        [name, `${slug}.com`, slug, subdomain, brand_color, logo_url]
       )
     ).rows[0];
-    console.log("created tenant", tenant.id);
-  } else {
-    console.log("tenant exists", tenant.id);
+    console.log("created tenant", name, row.id);
+    return row.id;
   }
-  const tenantId = tenant.id;
+
+  // Primary tenant — Global Flexinars Inc.
+  const tenantId = await upsertTenant({
+    name: "Global Flexinars Inc.",
+    slug: "globalflexinars",
+    subdomain: "globalflexinars",
+    brand_color: "#1D4ED8", // clean blue — placeholder for their real brand
+    logo_url: null, // no logo yet — the UI falls back to the tenant name
+  });
+
+  // Second, isolated tenant — smoke test for multi-tenancy. It gets its own row
+  // and intentionally shares NO courses or learners with Global Flexinars.
+  const demoTenantId = await upsertTenant({
+    name: "Demo Dental CE",
+    slug: "demo-dental",
+    subdomain: "demo",
+    brand_color: "#059669", // emerald
+    logo_url: null,
+  });
+  console.log("demo tenant (no courses/learners)", demoTenantId);
 
   // 2) Course — "Bruxism Reframed" (real spec content). Idempotent: match any
   //    existing Bruxism Reframed course for this tenant and update it in place,
